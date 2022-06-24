@@ -58,7 +58,7 @@ public class FuncionarioAppService {
 
         var novoFuncionario = funcionarioRepository.incluirFuncionario(funcionario);
 
-        candidatoRepository.baixarCandidato(candidato.getCandidatoId());
+        candidatoRepository.baixarCandidato(candidato.getCpf());
         mensagem.setObjeto(novoFuncionario).setSucesso(true).setTitulo("Admissão de Funcionário")
                 .setDescricao("Candidato admitido com sucesso");
 

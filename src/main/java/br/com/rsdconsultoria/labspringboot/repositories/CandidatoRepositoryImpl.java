@@ -34,12 +34,11 @@ public class CandidatoRepositoryImpl implements ICandidatoRepository {
     private CandidatoRepository candidatoRepository;
 
     @Override
-    public void baixarCandidato(long id) {
-        var candidato = candidatoRepository.findAll(Example.of(new CandidatoVM().setCandidatoId(id)));
-        if (candidato.size() > 0) {
-            candidato.get(0).setNome("CONTRATADO");
-            candidatoRepository.save(candidato.get(0));
-            candidatoRepository.flush();
+    public void baixarCandidato(String id) {
+        var candidato = candidatoRepository.findOne(Example.of(new CandidatoVM().setCpf(id)));
+        if (candidato.isPresent()) {
+            candidato.get().setNome("CONTRATADO");
+            candidatoRepository.saveAndFlush(candidato.get());
         }
     }
 }

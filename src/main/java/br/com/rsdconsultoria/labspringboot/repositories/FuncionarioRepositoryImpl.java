@@ -43,8 +43,7 @@ public class FuncionarioRepositoryImpl implements IFuncionarioRepository {
         novoFuncionario.setDataNascimento(funcionario.getDataNascimento());
         novoFuncionario.setNome(funcionario.getNome());
         novoFuncionario.setChapa(4234L);
-        this.funcionarioRepository.save(novoFuncionario);
-        funcionarioRepository.flush();
+        this.funcionarioRepository.saveAndFlush(novoFuncionario);
         return FuncionarioVMBuilder.toFuncionario(novoFuncionario);
     }
 

@@ -22,5 +22,5 @@ SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.core.interfaces;
 
 public interface ICandidatoRepository {
-    void baixarCandidato(long id);
+    void baixarCandidato(String id);
 }
