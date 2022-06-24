@@ -29,7 +29,10 @@ Ao invés de `criar instâncias de classes diretamente`, opte por usar métodos 
 ## Interfaces
 Sempre que precisar definir algo que seja provido fora do Core, use uma interface para expor os métodos que precisa. Assim pode implementar da forma que for apropriada sem criar dependências dentro do Core
 
+
 # Datas no Node.JS/JavaScript
+
+
 Gravar a data no formato GMT no banco de dados e converter no front end
 para localidade desejada
 ```bash

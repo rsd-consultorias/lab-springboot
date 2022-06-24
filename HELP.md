@@ -22,5 +22,18 @@ The following guides illustrate how to use some features concretely:
 * [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
 
 
+# Banco de Dados in memmory
+
+## Para acessar as tabelas
+
+Mudar no application.properties:
+```
+spring.h2.console.enabled=true
+```
+
+Acessar no browser:
+```
+http://localhost:8080/h2-console/login.do
+```
 
 
