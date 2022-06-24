@@ -23,8 +23,6 @@ package br.com.rsdconsultoria.labspringboot;
 
 import java.util.TimeZone;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

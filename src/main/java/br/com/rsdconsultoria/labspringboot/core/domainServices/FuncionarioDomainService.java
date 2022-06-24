@@ -22,7 +22,6 @@ SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.core.domainServices;
 
 import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
