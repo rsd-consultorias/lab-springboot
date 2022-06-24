@@ -46,12 +46,19 @@ public class FuncionarioAppService {
     public Mensagem<Funcionario> admitirFuncionario(Candidato candidato) {
         var mensagem = new Mensagem<Funcionario>();
         var funcionario = FuncionarioBuilder.fromCandidato(candidato);
-        var antecedentesCriminais = this.funcionarioDomainService.verificarAntecedentesCriminais(candidato.getCpf(),
+        var antecedentesCriminais = this.funcionarioDomainService.listarAntecedentesCriminais(candidato.getCpf(),
                 candidato.getDataNascimento());
 
         if (antecedentesCriminais.isPresent()) {
             mensagem.setTitulo("Admissão de Funcionário").setDescricao("Candidato com antecendentes criminais")
                     .setSucesso(false);
+
+            return mensagem;
+        }
+
+        if(!funcionarioDomainService.verificarSeElegivelAVaga(candidato.getCpf(), candidato.getDataNascimento())){
+            mensagem.setTitulo("Admissão de Funcionário").setDescricao("Candidato não elegível à vaga")
+            .setSucesso(false);
 
             return mensagem;
         }

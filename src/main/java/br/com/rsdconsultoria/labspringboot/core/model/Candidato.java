@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.core.model;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public class Candidato {
@@ -29,7 +29,7 @@ public class Candidato {
     private long candidatoId;
     private String nome;
     private String cpf;
-    private Date dataNascimento;
+    private OffsetDateTime dataNascimento;
 
     public UUID getId() {
         return id;
@@ -49,11 +49,11 @@ public class Candidato {
         return this;
     }
 
-    public Date getDataNascimento() {
+    public OffsetDateTime getDataNascimento() {
         return dataNascimento;
     }
 
-    public Candidato setDataNascimento(Date dataNascimento) {
+    public Candidato setDataNascimento(OffsetDateTime dataNascimento) {
         this.dataNascimento = dataNascimento;
         return this;
     }

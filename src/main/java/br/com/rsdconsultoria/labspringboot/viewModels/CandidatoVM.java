@@ -22,15 +22,17 @@ SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.viewModels;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tab_candidatos")
 public class CandidatoVM extends AuditoriaDadosBase implements Serializable {
 
     private static final long serialVersionUID = -45534202839071120L;
@@ -49,7 +51,7 @@ public class CandidatoVM extends AuditoriaDadosBase implements Serializable {
     @Column(length = 11, unique = true)
     private String cpf;
 
-    private Date dataNascimento;
+    private OffsetDateTime dataNascimento;
 
     public UUID getId() {
         return this.id;
@@ -69,11 +71,11 @@ public class CandidatoVM extends AuditoriaDadosBase implements Serializable {
         return this;
     }
 
-    public Date getDataNascimento() {
+    public OffsetDateTime getDataNascimento() {
         return dataNascimento;
     }
 
-    public CandidatoVM setDataNascimento(Date dataNascimento) {
+    public CandidatoVM setDataNascimento(OffsetDateTime dataNascimento) {
         this.dataNascimento = dataNascimento;
         return this;
     }

@@ -21,8 +21,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.services;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,11 +34,11 @@ import br.com.rsdconsultoria.labspringboot.core.interfaces.IAntecedentesCriminai
 public class AntecedentesCriminaisService implements IAntecedentesCriminaisService {
 
     @Override
-    public Optional<List<String>> listarAntecedentes(String cpf, Date dataNascimento) {
+    public Optional<List<String>> listarAntecedentes(String cpf, OffsetDateTime dataNascimento) {
         var lista = new ArrayList<String>();
         lista.add("Teste de teste");
 
-        if (cpf.equals("12312312313")) {
+        if (cpf.equals("12312312311")) {
             return Optional.of(lista);
         } else {
             return Optional.empty();

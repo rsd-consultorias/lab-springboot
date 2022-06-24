@@ -21,10 +21,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.core.interfaces;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface IAntecedentesCriminaisService {
-    Optional<List<String>> listarAntecedentes(String cpf, Date dataNascimento);
+    Optional<List<String>> listarAntecedentes(String cpf, OffsetDateTime dataNascimento);
 }

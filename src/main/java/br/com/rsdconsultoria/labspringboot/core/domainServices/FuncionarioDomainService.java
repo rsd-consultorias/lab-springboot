@@ -21,6 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.core.domainServices;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +35,11 @@ public class FuncionarioDomainService {
         this.antecedentesCriminaisService = antecedentesCriminaisService;
     }
 
-    public Optional<List<String>> verificarAntecedentesCriminais(String cpf, Date dataNascimento) {
+    public Optional<List<String>> listarAntecedentesCriminais(String cpf, OffsetDateTime dataNascimento) {
         return this.antecedentesCriminaisService.listarAntecedentes(cpf, dataNascimento);
+    }
+
+    public Boolean verificarSeElegivelAVaga(String cpf, OffsetDateTime dataNascimento) {
+        return !cpf.equals("12312312312");
     }
 }

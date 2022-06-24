@@ -26,6 +26,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rsdconsultoria.labspringboot.core.valueObjects.Mensagem;
@@ -33,27 +34,29 @@ import br.com.rsdconsultoria.labspringboot.repositories.CandidatoRepository;
 import br.com.rsdconsultoria.labspringboot.viewModels.CandidatoVM;
 
 @RestController
+@RequestMapping("/api/${br.com.rsdconsultoria.api.version}/candidatura")
 public class CandidaturaController {
     @Autowired
     private CandidatoRepository candidatoRepository;
 
-    @PutMapping("/${br.com.rsdconsultoria.api.version}/candidatura")
+    @PutMapping
     public Mensagem<CandidatoVM> incluir(@RequestBody CandidatoVM novoCandidato) {
         var msg = new Mensagem<CandidatoVM>();
-        msg.setDescricao("Ocorreu uma falha ao cadastrar o candidato. Tente novamente ou entre em contato com o suporte da aplicação");
+        msg.setDescricao(
+                "Ocorreu uma falha ao cadastrar o candidato. Tente novamente ou entre em contato com o suporte da aplicação");
 
         if (candidatoRepository.findOne(Example.of(new CandidatoVM().setCpf(novoCandidato.getCpf()))).isPresent()) {
             msg.setDescricao("Candidato já cadastrado").setSucesso(false);
             return msg;
         }
 
-        if (this.candidatoRepository.save(novoCandidato) != null) {
+        if (this.candidatoRepository.saveAndFlush(novoCandidato) != null) {
             msg.setSucesso(true).setDescricao("Candidato cadastrado com sucesso");
         }
         return msg;
     }
 
-    @GetMapping("/${br.com.rsdconsultoria.api.version}/candidatura")
+    @GetMapping
     public Object listar() {
         return candidatoRepository.findAll();
     }

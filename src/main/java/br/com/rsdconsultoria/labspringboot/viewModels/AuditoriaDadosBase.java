@@ -21,37 +21,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.com.rsdconsultoria.labspringboot.viewModels;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import br.com.rsdconsultoria.labspringboot.UsuarioLogadoGenerator;
 
 @MappedSuperclass
 public class AuditoriaDadosBase {
-
+   
     @CreationTimestamp
-    private Date DataInclusao;
+    private OffsetDateTime dataCriacao;
 
     @UpdateTimestamp
+    @Column(nullable = true, insertable = false)
+    private OffsetDateTime dataAlteracao;
+
+    @GeneratorType(type = UsuarioLogadoGenerator.class, when = GenerationTime.INSERT)
     @Column(nullable = true)
-    private Date DataAlteracao;
+    private String usuarioCriacao;
 
-    public Date getDataAlteracao() {
-        return DataAlteracao;
-    }
-
-    public void setDataAlteracao(Date dataAlteracao) {
-        this.DataAlteracao = dataAlteracao;
-    }
-
-    public Date getDataInclusao() {
-        return DataInclusao;
-    }
-
-    public void setDataInclusao(Date dataInclusao) {
-        this.DataInclusao = dataInclusao;
-    }    
+    @GeneratorType(type = UsuarioLogadoGenerator.class, when = GenerationTime.ALWAYS)
+    @Column(nullable = true, insertable = false)
+    private String usuarioAlteracao;
 }

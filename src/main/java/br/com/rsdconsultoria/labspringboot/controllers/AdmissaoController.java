@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rsdconsultoria.labspringboot.applicationServices.FuncionarioService;
@@ -38,6 +39,7 @@ import br.com.rsdconsultoria.labspringboot.viewModels.CandidatoVM;
 import br.com.rsdconsultoria.labspringboot.viewModels.FuncionarioVM;
 
 @RestController
+@RequestMapping("/api/${br.com.rsdconsultoria.api.version}/admissao")
 public class AdmissaoController {
 
     @Autowired
@@ -46,7 +48,7 @@ public class AdmissaoController {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
-    @PutMapping("/${br.com.rsdconsultoria.api.version}/admissao")
+    @PutMapping
     public Mensagem<Funcionario> admitir(@RequestBody CandidatoVM candidato) {
         var msg = new Mensagem<Funcionario>();
 
@@ -60,7 +62,7 @@ public class AdmissaoController {
         return msg;
     }
 
-    @GetMapping("/${br.com.rsdconsultoria.api.version}/admissao")
+    @GetMapping
     public List<FuncionarioVM> listarFuncionarios() {
         return funcionarioRepository.findAll();
     }
